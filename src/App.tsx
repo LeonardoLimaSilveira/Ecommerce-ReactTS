@@ -1,9 +1,8 @@
-import './App.css'
 import Header from './assets/Header'
 
 function App() {
   return (
-    <div className="mb-2 bg-OrangePrimary">
+    <div>
       <Header />
     </div>
   )
