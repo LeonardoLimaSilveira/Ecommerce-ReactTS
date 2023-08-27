@@ -16,6 +16,15 @@ export default {
       screens: {
         mobile: '375px',
         desktop: '1440px'
+      },
+      keyframes: {
+        slideDown: {
+          '0%, 100%': { translateY: '-20px', opacity: 0 }
+        }
+      },
+
+      animation: {
+        slideDown: 'slideDown 0.5s ease-in-out'
       }
     }
   },
