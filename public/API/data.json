@@ -1,4 +1,4 @@
-{
+[{
   "product": {
     "name": "Fall Limited Edition Sneakers",
     "brand": "SNEAKER COMPANY",
@@ -19,4 +19,4 @@
     "discount": "25%",
     "finalPrice": 125.00 
   }
-}
+}]

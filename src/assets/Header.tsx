@@ -50,7 +50,7 @@ const Header = () => {
           )}
         </div>
         <img
-          src="../../public/images/image-avatar.png"
+          src="./images/image-avatar.png"
           alt="user avatar photo"
           className="hover:outline hover:outline-2 hover:outline-OrangePrimary rounded-full cursor-pointer h-12 w-h-12 ml-4"
         />
