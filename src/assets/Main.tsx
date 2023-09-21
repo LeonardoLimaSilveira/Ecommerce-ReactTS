@@ -1,4 +1,5 @@
 import React from 'react'
+import IconCart from './components/SVGs/IconCart'
 
 type Product = {
   product: {
@@ -16,6 +17,7 @@ type Product = {
 const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
+  const [count, setCount] = React.useState(3)
 
   React.useEffect(() => {
     if (data) {
@@ -64,7 +66,59 @@ const Main = () => {
               )
             })}
         </div>
-        <div className="flex-1"></div>
+        <div className="flex-1 h-[26rem]">
+          {data.length > 0 &&
+            data.map(item => {
+              return (
+                <div
+                  key={item.product.name}
+                  className=" flex flex-col justify-around h-full "
+                >
+                  <h4 className="text-OrangePrimary tracking-widest font-bold text-sm">
+                    {item.product.brand}
+                  </h4>
+                  <h1 className="font-bold text-6xl">{item.product.name}</h1>
+                  <p className="text-DarkGrayishBlue w-[80%] leading-8 ">
+                    {item.product.description}
+                  </p>
+                  <div className="flex items-center">
+                    <h2 className="font-bold mr-5 text-3xl">
+                      ${item.product.finalPrice}
+                    </h2>
+                    <div className="bg-PaleOrange text-OrangePrimary rounded-md h-6 px-2 font-bold text-sm flex items-center">
+                      {item.product.discount}
+                    </div>
+                  </div>
+                  <div className=" text-GrayishBlue font-bold line-through -mt-3">
+                    ${item.product.price}.00
+                  </div>
+                  <div className="flex mt-4 items-center">
+                    <div className="flex">
+                      <div
+                        className="bg-LightGrayishBlue rounded-s-md p-4 text-OrangePrimary font-bold text-lg cursor-pointer"
+                        onClick={() => {
+                          if (count > 0) setCount(count - 1)
+                        }}
+                      >
+                        -
+                      </div>
+                      <div className="bg-LightGrayishBlue p-4">{count}</div>
+                      <div
+                        className="bg-LightGrayishBlue rounded-e-md p-4 text-OrangePrimary font-bold text-lg cursor-pointer"
+                        onClick={() => setCount(count + 1)}
+                      >
+                        +
+                      </div>
+                    </div>
+                    <div className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70">
+                      <IconCart className={'mr-3'} fill="#fff" />
+                      <span>Add to cart</span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+        </div>
       </div>
     </main>
   )

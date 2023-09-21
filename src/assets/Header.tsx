@@ -32,7 +32,7 @@ const Header = () => {
       <div className="flex items-center justify-center">
         <div>
           <div onClick={() => setOpen(!open)}>
-            <IconCart className=" mr-7 cursor-pointer relative" />
+            <IconCart fill="" className=" mr-7 cursor-pointer relative" />
           </div>
           {open && (
             <div className="min-h-[18rem] w-96 absolute bg-WhiteStyle right-28 rounded-xl shadow-lg mt-4 grid grid-rows-[25%,auto] animate-slideDown">

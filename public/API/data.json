@@ -16,7 +16,7 @@
       "../images/image-product-4-thumbnail.jpg"
     ],
     "price": 250.00,
-    "discount": "25%",
+    "discount": "50%",
     "finalPrice": 125.00 
   }
 }]
