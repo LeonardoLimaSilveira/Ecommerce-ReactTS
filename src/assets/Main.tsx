@@ -1,5 +1,6 @@
 import React from 'react'
 import IconCart from './components/SVGs/IconCart'
+import { useCart } from './components/useContext'
 
 type Product = {
   product: {
@@ -17,7 +18,9 @@ type Product = {
 const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
-  const [count, setCount] = React.useState(3)
+  const [count, setCount] = React.useState(0)
+  const { cart, setCart } = useCart()
+  console.log(cart)
 
   React.useEffect(() => {
     if (data) {
@@ -39,7 +42,6 @@ const Main = () => {
         <div className="flex-1">
           {data.length > 0 &&
             data.map(item => {
-              console.log(item.product.name)
               return (
                 <div key={item.product.name}>
                   <div>
@@ -110,7 +112,16 @@ const Main = () => {
                         +
                       </div>
                     </div>
-                    <div className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70">
+                    <div
+                      onClick={() =>
+                        setCart([
+                          item.product.name,
+                          item.product.finalPrice.toString(),
+                          count.toString()
+                        ])
+                      }
+                      className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70"
+                    >
                       <IconCart className={'mr-3'} fill="#fff" />
                       <span>Add to cart</span>
                     </div>
