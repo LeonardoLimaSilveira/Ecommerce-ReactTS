@@ -19,8 +19,7 @@ const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
   const [count, setCount] = React.useState(0)
-  const { cart, setCart } = useCart()
-  console.log(cart)
+  const { setCart } = useCart()
 
   React.useEffect(() => {
     if (data) {
@@ -114,11 +113,14 @@ const Main = () => {
                     </div>
                     <div
                       onClick={() =>
-                        setCart([
-                          item.product.name,
-                          item.product.finalPrice.toString(),
-                          count.toString()
-                        ])
+                        count === 0
+                          ? setCart([])
+                          : setCart([
+                              item.product.name,
+                              item.product.finalPrice.toString(),
+                              item.product.photos[0],
+                              count.toString()
+                            ])
                       }
                       className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70"
                     >
