@@ -6,11 +6,14 @@ import IconDelete from './components/SVGs/IconDelete'
 
 const Header = () => {
   const [open, setOpen] = React.useState(false)
-  const [count, setCount] = React.useState<string | null>()
+  const [count, setCount] = React.useState<number | null>()
+
   const { cart, setCart } = useCart()
 
   React.useEffect(() => {
-    setCount(cart[cart.length - 1])
+    cart.filter(item => {
+      return setCount(item.itemAmount)
+    })
   }, [cart])
 
   return (
@@ -43,7 +46,7 @@ const Header = () => {
             <IconCart fill="" className=" mr-7 cursor-pointer " />
             {count && (
               <span className="absolute right-5 -top-2 bg-OrangePrimary text-[0.55rem] font-bold px-[0.4rem] rounded-3xl text-WhiteStyle">
-                {count}
+                {count.toString()}
               </span>
             )}
           </div>
@@ -56,32 +59,39 @@ const Header = () => {
               </div>
               <div>
                 {cart.length > 0 ? (
-                  <div className=" grid grid-rows-2 items-center w-[90%] relative mx-auto h-full">
-                    <div className="flex items-center  min-h-full  text-DarkGrayishBlue">
-                      <img
-                        src={cart[2]}
-                        alt="item photo"
-                        className="h-14 rounded-lg "
-                      />
-                      <div className="ml-4">
-                        <h1>{cart[0]}</h1>
-                        <div className="flex ">
-                          <h3>${cart[1]}.00 x </h3>
-                          <h4 className="ml-2">{cart[3]}</h4>
-                          <span className="font-bold ml-3 text-BlackStyle ">
-                            ${Number(cart[1]) * Number(cart[3])}.00
-                          </span>
+                  cart.map(item => {
+                    return (
+                      <div
+                        key={item.itemAmount}
+                        className=" grid grid-rows-2 items-center w-[90%] relative mx-auto h-full"
+                      >
+                        <div className="flex items-center  min-h-full  text-DarkGrayishBlue">
+                          <img
+                            src={item.itemPhoto}
+                            alt="item photo"
+                            className="h-14 rounded-lg "
+                          />
+                          <div className="ml-4">
+                            <h1>{item.itemName}</h1>
+                            <div className="flex ">
+                              <h3>${item.itemPrice.toString()}.00 x </h3>
+                              <h4 className="ml-2">{item.itemAmount}</h4>
+                              <span className="font-bold ml-3 text-BlackStyle ">
+                                ${Number(item.itemPrice) * item.itemAmount}.00
+                              </span>
+                            </div>
+                          </div>
+                          <IconDelete
+                            onClick={() => setCart([])}
+                            className="cursor-pointer ml-5 absolute right-2"
+                          />
+                        </div>
+                        <div className="flex bg-OrangePrimary w-full  mx-auto text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center justify-center font-bold hover:opacity-70">
+                          <button>Checkout</button>
                         </div>
                       </div>
-                      <IconDelete
-                        onClick={() => setCart([])}
-                        className="cursor-pointer ml-5 absolute right-2"
-                      />
-                    </div>
-                    <div className="flex bg-OrangePrimary w-full  mx-auto text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center justify-center font-bold hover:opacity-70">
-                      <button>Checkout</button>
-                    </div>
-                  </div>
+                    )
+                  })
                 ) : (
                   <div className="h-full w-full flex items-center justify-center text-DarkGrayishBlue font-bold tracking-wide">
                     Your cart is empty.

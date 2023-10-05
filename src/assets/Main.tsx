@@ -116,10 +116,12 @@ const Main = () => {
                         count === 0
                           ? setCart([])
                           : setCart([
-                              item.product.name,
-                              item.product.finalPrice.toString(),
-                              item.product.photos[0],
-                              count.toString()
+                              {
+                                itemName: item.product.name,
+                                itemPrice: item.product.finalPrice,
+                                itemPhoto: item.product.photos[0],
+                                itemAmount: count
+                              }
                             ])
                       }
                       className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70"
