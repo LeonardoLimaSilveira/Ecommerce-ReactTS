@@ -1,6 +1,6 @@
 import React from 'react'
 import IconCart from './components/SVGs/IconCart'
-import { useCart } from './components/useContext'
+import { useCont } from './components/useContext'
 
 type Product = {
   product: {
@@ -19,7 +19,8 @@ const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
   const [count, setCount] = React.useState(0)
-  const { setCart } = useCart()
+  const { setCart, setOpen } = useCont()
+  console.log(count)
 
   React.useEffect(() => {
     if (data) {
@@ -112,18 +113,22 @@ const Main = () => {
                       </div>
                     </div>
                     <div
-                      onClick={() =>
-                        count === 0
-                          ? setCart([])
-                          : setCart([
-                              {
-                                itemName: item.product.name,
-                                itemPrice: item.product.finalPrice,
-                                itemPhoto: item.product.photos[0],
-                                itemAmount: count
-                              }
-                            ])
-                      }
+                      onClick={() => {
+                        if (count === 0) {
+                          setCount(0)
+                          setCart([])
+                        } else {
+                          setCart([
+                            {
+                              itemName: item.product.name,
+                              itemPrice: item.product.finalPrice,
+                              itemPhoto: item.product.photos[0],
+                              itemAmount: count
+                            }
+                          ])
+                          setOpen(true)
+                        }
+                      }}
                       className="flex bg-OrangePrimary text-WhiteStyle cursor-pointer px-28 h-14 rounded-xl items-center ml-6 font-bold hover:opacity-70"
                     >
                       <IconCart className={'mr-3'} fill="#fff" />

@@ -1,14 +1,12 @@
 import React from 'react'
 import IconCart from './components/SVGs/IconCart'
 import LogoSVG from './components/SVGs/LogoSVG'
-import { useCart } from './components/useContext'
+import { useCont } from './components/useContext'
 import IconDelete from './components/SVGs/IconDelete'
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false)
   const [count, setCount] = React.useState<number | null>()
-
-  const { cart, setCart } = useCart()
+  const { cart, setCart, open, setOpen } = useCont()
 
   React.useEffect(() => {
     cart.filter(item => {
@@ -82,7 +80,13 @@ const Header = () => {
                             </div>
                           </div>
                           <IconDelete
-                            onClick={() => setCart([])}
+                            onClick={() => {
+                              setCount(null)
+                              setCart([])
+                              setTimeout(() => {
+                                setOpen(false)
+                              }, 1000)
+                            }}
                             className="cursor-pointer ml-5 absolute right-2"
                           />
                         </div>
