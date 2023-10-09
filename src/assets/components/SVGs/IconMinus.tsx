@@ -1,10 +1,18 @@
-const IconMinus = () => {
+const IconMinus = ({
+  className,
+  onClick
+}: {
+  className?: string | undefined
+  onClick?: React.MouseEventHandler<SVGSVGElement> | undefined
+}) => {
   return (
     <svg
       width="12"
       height="4"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={className}
+      onClick={onClick}
     >
       <defs>
         <path
@@ -12,7 +20,7 @@ const IconMinus = () => {
           id="a"
         />
       </defs>
-      <use fill="#FF7E1B" fill-rule="nonzero" xlinkHref="#a" />
+      <use fill="#FF7E1B" fillRule="nonzero" xlinkHref="#a" />
     </svg>
   )
 }

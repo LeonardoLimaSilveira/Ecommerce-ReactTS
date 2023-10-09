@@ -19,7 +19,7 @@ const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
   const [count, setCount] = React.useState(0)
-  const { setCart, setOpen } = useCont()
+  const { setCart, setOpen, setModal, setPhoto } = useCont()
   console.log(count)
 
   React.useEffect(() => {
@@ -49,6 +49,10 @@ const Main = () => {
                       className="w-[70%] h-[70%] m-auto rounded-2xl hover:opacity-50 cursor-pointer"
                       src={src ? src : item.product.photos[0]}
                       alt={`${item.product.name} photo`}
+                      onClick={() => {
+                        setPhoto(src)
+                        setModal(true)
+                      }}
                     />
                     <div className="grid w-[70%] grid-cols-4 grid-rows-1 items-center justify-center mx-auto gap-5  ">
                       {item.product.photos.map(item => {
