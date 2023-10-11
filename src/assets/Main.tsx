@@ -2,7 +2,7 @@ import React from 'react'
 import IconCart from './components/SVGs/IconCart'
 import { useCont } from './components/useContext'
 
-type Product = {
+export type Product = {
   product: {
     name: string
     brand: string
@@ -20,7 +20,6 @@ const Main = () => {
   const [src, setSrc] = React.useState('')
   const [count, setCount] = React.useState(0)
   const { setCart, setOpen, setModal, setPhoto } = useCont()
-  console.log(count)
 
   React.useEffect(() => {
     if (data) {
