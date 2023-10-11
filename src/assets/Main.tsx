@@ -19,7 +19,7 @@ const Main = () => {
   const [data, setData] = React.useState<Product[]>([])
   const [src, setSrc] = React.useState('')
   const [count, setCount] = React.useState(0)
-  const { setCart, setOpen, setModal, setPhoto } = useCont()
+  const { setCart, setOpen, setModal, setPhoto, setAmount } = useCont()
 
   React.useEffect(() => {
     if (data) {
@@ -49,6 +49,9 @@ const Main = () => {
                       src={src ? src : item.product.photos[0]}
                       alt={`${item.product.name} photo`}
                       onClick={() => {
+                        src
+                          ? setAmount(Number(src.replace(/\D/g, '')))
+                          : setAmount(1)
                         setPhoto(src)
                         setModal(true)
                       }}
@@ -57,7 +60,9 @@ const Main = () => {
                       {item.product.photos.map(item => {
                         return (
                           <img
-                            onClick={() => setSrc(item)}
+                            onClick={() => {
+                              setSrc(item)
+                            }}
                             key={item}
                             src={item}
                             alt=""

@@ -9,6 +9,8 @@ interface ContextInterface {
   setModal: React.Dispatch<React.SetStateAction<boolean>>
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  amount: number
+  setAmount: React.Dispatch<React.SetStateAction<number>>
 }
 interface CartInterface {
   itemAmount: number
@@ -24,6 +26,7 @@ export const CartProvider = ({ children }: React.PropsWithChildren) => {
   const [photo, setPhoto] = React.useState('')
   const [modal, setModal] = React.useState(false)
   const [open, setOpen] = React.useState(false)
+  const [amount, setAmount] = React.useState<number>(1)
 
   return (
     <CartContext.Provider
@@ -35,7 +38,9 @@ export const CartProvider = ({ children }: React.PropsWithChildren) => {
         modal,
         setModal,
         open,
-        setOpen
+        setOpen,
+        amount,
+        setAmount
       }}
     >
       {children}
