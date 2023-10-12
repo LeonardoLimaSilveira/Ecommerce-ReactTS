@@ -3,10 +3,12 @@ import IconCart from './components/SVGs/IconCart'
 import LogoSVG from './components/SVGs/LogoSVG'
 import { useCont } from './components/useContext'
 import IconDelete from './components/SVGs/IconDelete'
+import IconClose from './components/SVGs/IconClose'
 
 const Header = () => {
   const [count, setCount] = React.useState<number | null>()
   const { cart, setCart, open, setOpen } = useCont()
+  const [menu, setMenu] = React.useState(false)
 
   React.useEffect(() => {
     cart.filter(item => {
@@ -14,11 +16,44 @@ const Header = () => {
     })
   }, [cart])
 
+  function closeMenu() {
+    setMenu(!menu)
+  }
+
   return (
     <header className="max-w-[80%] m-auto h-28  flex border-b border-GrayishBlue/50 justify-between">
-      <div className="flex items-center">
+      <div className="flex items-center" onClick={closeMenu}>
+        <div className="mobile:block desktop:hidden mr-3">
+          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
+          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
+          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
+        </div>
+        {menu && (
+          <nav className="desktop:hidden fixed w-[60%] h-screen left-0 top-0 items-start flex flex-col bg-WhiteStyle">
+            <div onClick={closeMenu}>
+              <IconClose className="ml-5 my-5" />
+            </div>
+            <ul className="justify-evenly ml-5 font-bold flex-col w-full items-start">
+              <li className="h-5">
+                <a>Collections</a>
+              </li>
+              <li className="h-5">
+                <a>Men</a>
+              </li>
+              <li className="h-5">
+                <a>Women</a>
+              </li>
+              <li className="h-5">
+                <a>About</a>
+              </li>
+              <li className="h-5">
+                <a>Contact</a>
+              </li>
+            </ul>
+          </nav>
+        )}
         <LogoSVG />
-        <nav className="text-DarkGrayishBlue ml-14 nav ">
+        <nav className="text-DarkGrayishBlue ml-14 nav mobile:hidden">
           <ul className="">
             <li className="ml-9 hover:text-VeryDarkBlue  hover:border-b-4 hover:border-OrangePrimary">
               <a className="cursor-pointer">Collections</a>

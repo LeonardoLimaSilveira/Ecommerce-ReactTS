@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       screens: {
-        mobile: '375px',
+        mobile: '444px',
         desktop: '1440px'
       },
       keyframes: {
