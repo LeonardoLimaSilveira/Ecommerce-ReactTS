@@ -29,7 +29,7 @@ const IconNext = ({
         <path
           d="m2 1 8 8-8 8"
           stroke={`${color || '#1D2026'}`}
-          stroke-width="3"
+          strokeWidth="3"
           fill="none"
           fillRule="evenodd"
         />

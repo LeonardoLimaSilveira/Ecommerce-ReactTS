@@ -7,21 +7,19 @@ import IconClose from './components/SVGs/IconClose'
 
 const Header = () => {
   const [count, setCount] = React.useState<number | null>()
-  const { cart, setCart, open, setOpen } = useCont()
-  const [menu, setMenu] = React.useState(false)
+  const { cart, setCart, open, setOpen, menu, setMenu } = useCont()
 
   React.useEffect(() => {
     cart.filter(item => {
       return setCount(item.itemAmount)
     })
   }, [cart])
-  console.log(count)
   function closeMenu() {
     setMenu(!menu)
   }
 
   return (
-    <header className="max-w-[80%] m-auto h-28  flex border-b border-GrayishBlue/50 justify-between">
+    <header className="max-w-[80%] m-auto h-28 mobile:h-20 flex border-b border-GrayishBlue/50 justify-between ">
       <div className="flex items-center" onClick={closeMenu}>
         <div className="mobile:block desktop:hidden mr-4">
           <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
@@ -30,7 +28,7 @@ const Header = () => {
         </div>
         {menu && (
           <div className="bg-BlackStyle/60 w-screen h-screen animate-slideRight z-20 fixed left-0 top-0">
-            <nav className="desktop:hidden  w-[70%] h-screen   items-start flex flex-col bg-WhiteStyle">
+            <nav className="  w-[70%] h-screen   items-start flex flex-col bg-WhiteStyle">
               <div onClick={closeMenu}>
                 <IconClose className="ml-5 my-5" />
               </div>
@@ -86,7 +84,7 @@ const Header = () => {
             )}
           </div>
           {open && (
-            <div className="min-h-[18rem] w-96 absolute bg-WhiteStyle right-28 rounded-xl shadow-lg mt-4 grid grid-rows-[25%,auto] animate-slideDown">
+            <div className="min-h-[18rem] w-96 absolute bg-WhiteStyle right-28 rounded-xl shadow-lg mt-4 grid grid-rows-[25%,auto] animate-slideDown mobile:z-50 mobile:right-0 mobile:left-5 mobile:top-24">
               <div className="border-b border-GrayishBlue/50 ">
                 <h1 className="font-bold h-full flex items-center justify-start ml-5">
                   Cart
