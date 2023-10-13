@@ -37,7 +37,7 @@ const Main = () => {
 
   return (
     <main className="max-w-[70%] mx-auto my-20">
-      <div className="flex justify-center items-center">
+      <div className="flex mobile:flex-col justify-center items-center">
         <div className="flex-1">
           {data.length > 0 &&
             data.map(item => {

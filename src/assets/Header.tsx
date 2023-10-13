@@ -15,7 +15,7 @@ const Header = () => {
       return setCount(item.itemAmount)
     })
   }, [cart])
-
+  console.log(count)
   function closeMenu() {
     setMenu(!menu)
   }
@@ -23,34 +23,36 @@ const Header = () => {
   return (
     <header className="max-w-[80%] m-auto h-28  flex border-b border-GrayishBlue/50 justify-between">
       <div className="flex items-center" onClick={closeMenu}>
-        <div className="mobile:block desktop:hidden mr-3">
-          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
-          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
-          <div className="w-8 h-1 bg-VeryDarkBlue my-1"></div>
+        <div className="mobile:block desktop:hidden mr-4">
+          <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
+          <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
+          <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
         </div>
         {menu && (
-          <nav className="desktop:hidden fixed w-[60%] h-screen left-0 top-0 items-start flex flex-col bg-WhiteStyle">
-            <div onClick={closeMenu}>
-              <IconClose className="ml-5 my-5" />
-            </div>
-            <ul className="justify-evenly ml-5 font-bold flex-col w-full items-start">
-              <li className="h-5">
-                <a>Collections</a>
-              </li>
-              <li className="h-5">
-                <a>Men</a>
-              </li>
-              <li className="h-5">
-                <a>Women</a>
-              </li>
-              <li className="h-5">
-                <a>About</a>
-              </li>
-              <li className="h-5">
-                <a>Contact</a>
-              </li>
-            </ul>
-          </nav>
+          <div className="bg-BlackStyle/60 w-screen h-screen animate-slideRight z-20 fixed left-0 top-0">
+            <nav className="desktop:hidden  w-[70%] h-screen   items-start flex flex-col bg-WhiteStyle">
+              <div onClick={closeMenu}>
+                <IconClose className="ml-5 my-5" />
+              </div>
+              <ul className="justify-evenly ml-5 font-bold flex-col w-full h-[40%] items-start">
+                <li className="h-5">
+                  <a>Collections</a>
+                </li>
+                <li className="h-5">
+                  <a>Men</a>
+                </li>
+                <li className="h-5">
+                  <a>Women</a>
+                </li>
+                <li className="h-5">
+                  <a>About</a>
+                </li>
+                <li className="h-5">
+                  <a>Contact</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         )}
         <LogoSVG />
         <nav className="text-DarkGrayishBlue ml-14 nav mobile:hidden">
@@ -76,10 +78,10 @@ const Header = () => {
       <div className="flex items-center justify-center">
         <div>
           <div onClick={() => setOpen(!open)} className="relative">
-            <IconCart fill="" className=" mr-7 cursor-pointer " />
-            {count && (
+            <IconCart fill="" className=" mr-7 mobile:mr-2 cursor-pointer " />
+            {count !== undefined && (
               <span className="absolute right-5 -top-2 bg-OrangePrimary text-[0.55rem] font-bold px-[0.4rem] rounded-3xl text-WhiteStyle">
-                {count.toString()}
+                {count && count.toString()}
               </span>
             )}
           </div>
@@ -143,7 +145,7 @@ const Header = () => {
         <img
           src="./images/image-avatar.png"
           alt="user avatar photo"
-          className="hover:outline hover:outline-2 hover:outline-OrangePrimary rounded-full cursor-pointer h-12 w-h-12 ml-4"
+          className="hover:outline hover:outline-2 hover:outline-OrangePrimary rounded-full cursor-pointer h-12 mobile:h-8 mobile:mr-2 ml-4"
         />
       </div>
     </header>

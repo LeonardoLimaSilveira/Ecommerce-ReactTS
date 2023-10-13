@@ -22,7 +22,7 @@ interface CartInterface {
 const CartContext = React.createContext<ContextInterface | null>(null)
 
 export const CartProvider = ({ children }: React.PropsWithChildren) => {
-  const [cart, setCart] = React.useState([{} as CartInterface])
+  const [cart, setCart] = React.useState<CartInterface[]>([])
   const [photo, setPhoto] = React.useState('')
   const [modal, setModal] = React.useState(false)
   const [open, setOpen] = React.useState(false)
