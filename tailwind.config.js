@@ -15,7 +15,7 @@ export default {
     extend: {
       screens: {
         mobile: { max: '444px' },
-        desktop: { max: '1440px', min: '1080px' }
+        desktop: { min: '1080px' }
       },
       keyframes: {
         slideDown: {

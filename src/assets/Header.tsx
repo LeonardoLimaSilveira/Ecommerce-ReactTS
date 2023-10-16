@@ -3,17 +3,13 @@ import IconCart from './components/SVGs/IconCart'
 import LogoSVG from './components/SVGs/LogoSVG'
 import { useCont } from './components/useContext'
 import IconDelete from './components/SVGs/IconDelete'
-import IconClose from './components/SVGs/IconClose'
+import MenuMobile from './components/MenuMobile'
 
 const Header = () => {
   const [count, setCount] = React.useState<number | null>()
   const { cart, setCart, open, setOpen, menu, setMenu } = useCont()
   // const [fechar, setFechar] = React.useState(false)
 
-  function closeMenu() {
-    console.log('closeMenu chamada')
-    setMenu(false)
-  }
   React.useEffect(() => {
     cart.filter(item => {
       return setCount(item.itemAmount)
@@ -22,6 +18,8 @@ const Header = () => {
 
   return (
     <header className="max-w-[80%] m-auto h-28 mobile:h-20 flex border-b border-GrayishBlue/50 justify-between ">
+      {menu && <MenuMobile />}
+
       <div
         className="flex items-center"
         onClick={() => {
@@ -33,34 +31,8 @@ const Header = () => {
           <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
           <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
         </div>
-        {menu ? (
-          <div className="bg-BlackStyle/60 w-screen h-screen animate-slideRight z-20 fixed left-0 top-0 desktop:hidden">
-            <nav className="  w-[70%] h-screen   items-start flex flex-col bg-WhiteStyle">
-              <div>
-                <IconClose onClick={closeMenu} className="ml-5 my-5" />
-              </div>
-              <ul className="justify-evenly ml-5 font-bold flex-col w-full h-[40%] items-start">
-                <li className="h-5">
-                  <a>Collections</a>
-                </li>
-                <li className="h-5">
-                  <a>Men</a>
-                </li>
-                <li className="h-5">
-                  <a>Women</a>
-                </li>
-                <li className="h-5">
-                  <a>About</a>
-                </li>
-                <li className="h-5">
-                  <a onClick={closeMenu}>Contact</a>
-                </li>
-                <button onClick={() => setMenu(false)}>FECHAR</button>
-              </ul>
-            </nav>
-          </div>
-        ) : null}
         <LogoSVG />
+
         <nav className="text-DarkGrayishBlue ml-14 nav mobile:hidden">
           <ul className="">
             <li className="ml-9 hover:text-VeryDarkBlue  hover:border-b-4 hover:border-OrangePrimary">

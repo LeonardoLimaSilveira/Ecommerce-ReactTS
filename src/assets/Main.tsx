@@ -45,7 +45,7 @@ const Main = () => {
             data.map(item => {
               return (
                 <div key={item.product.name}>
-                  <div className="mobile:relative">
+                  <div className="mobile:relative  ">
                     <img
                       className="destkop:block mobile:hidden w-[70%] h-[70%]  m-auto rounded-2xl hover:opacity-50 cursor-pointer "
                       src={src ? src : item.product.photos[0]}
@@ -59,7 +59,7 @@ const Main = () => {
                       }}
                     />
                     <img
-                      className="mobile:block desktop:hidden h-[70%] w-full m-auto  "
+                      className="mobile:block desktop:hidden  h-[70%] w-full m-auto  "
                       src={`../images/image-product-${amount}.jpg`}
                       alt={`${item.product.name} photo`}
                     />

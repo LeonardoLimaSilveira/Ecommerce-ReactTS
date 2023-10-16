@@ -36,7 +36,9 @@ const Modal = () => {
         <div className="w-[30%] h-[60%] relative  ">
           <IconClose
             className="absolute right-0 -top-9 cursor-pointer hover:fill-OrangePrimary"
-            onClick={() => setModal(false)}
+            onClick={() => {
+              setModal(false)
+            }}
           />
 
           <IconPrevious
