@@ -131,7 +131,7 @@ const Main = () => {
                         {item.product.discount}
                       </div>
                     </div>
-                    <div className=" text-GrayishBlue mobile:my-auto font-bold line-through -mt-3 mobile:text-sm">
+                    <div className=" text-GrayishBlue mobile:my-auto font-bold line-through mt-2 mobile:text-sm">
                       ${item.product.price}.00
                     </div>
                   </div>

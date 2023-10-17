@@ -17,7 +17,7 @@ const Header = () => {
   }, [cart])
 
   return (
-    <header className="max-w-[80%] m-auto h-28 mobile:h-20 flex border-b border-GrayishBlue/50 justify-between ">
+    <header className="max-w-[80%] m-auto h-28 mobile:h-20 flex border-b border-GrayishBlue/50 justify-between mobile:max-w-[90%] ">
       {menu && <MenuMobile />}
 
       <div
@@ -31,8 +31,7 @@ const Header = () => {
           <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
           <div className="w-7 h-1 bg-VeryDarkBlue my-1"></div>
         </div>
-        <LogoSVG />
-
+        <LogoSVG className="" />
         <nav className="text-DarkGrayishBlue ml-14 nav mobile:hidden">
           <ul className="">
             <li className="ml-9 hover:text-VeryDarkBlue  hover:border-b-4 hover:border-OrangePrimary">
@@ -64,7 +63,7 @@ const Header = () => {
             )}
           </div>
           {open && (
-            <div className="min-h-[18rem] w-96 absolute bg-WhiteStyle right-28 rounded-xl shadow-lg mt-4 grid grid-rows-[25%,auto] animate-slideDown mobile:z-50 mobile:right-0 mobile:left-5 mobile:top-24">
+            <div className="min-h-[18rem] mobile:min-h-[16rem] mobile:w-[22rem] w-96 absolute bg-WhiteStyle right-28 rounded-xl shadow-lg mt-4 grid grid-rows-[25%,auto] animate-slideDown mobile:z-50 mobile:left-2/4 mobile:translate-x-[-50%] mobile:top-24">
               <div className="border-b border-GrayishBlue/50 ">
                 <h1 className="font-bold h-full flex items-center justify-start ml-5">
                   Cart
@@ -123,7 +122,7 @@ const Header = () => {
         <img
           src="./images/image-avatar.png"
           alt="user avatar photo"
-          className="hover:outline hover:outline-2 hover:outline-OrangePrimary rounded-full cursor-pointer h-12 mobile:h-8 mobile:mr-2 ml-4"
+          className="hover:outline hover:outline-2 hover:outline-OrangePrimary rounded-full cursor-pointer h-12 mobile:h-8  ml-4"
         />
       </div>
     </header>
